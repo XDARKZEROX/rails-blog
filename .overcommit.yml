@@ -31,4 +31,4 @@ PreCommit:
     enabled: true
   
   RuboCop:
-    enabled: true
+    enabled: false
