@@ -4,6 +4,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def index
+    # El campo params[:page] llega la pagina a la que se esta accediendo
+    @articles = Article.paginate(page: params[:page], per_page: 5)
+  end
+
   def edit; end
 
   def create
@@ -37,10 +42,6 @@ class ArticlesController < ApplicationController
   end
 
   def show; end
-
-  def index
-    @articles = Article.all
-  end
 
   def destroy
     @article.destroy
