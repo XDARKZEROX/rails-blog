@@ -9,13 +9,14 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    #is true return boolean
+    # Is true return boolean
     !!current_user
   end
 
   def require_user
-    return unless logged_in?
-    flash[:danger] = 'debes estar logueado'
-    redirect_to root_path
+    if !logged_in?
+      flash[:danger] = 'debes estar logueado'
+      redirect_to root_path
+    end
   end
 end
