@@ -1,10 +1,7 @@
 class SessionsController < ApplicationController
-
- #   says to the computer “Create me a form for the sessions controller, 
- #   and submit it to the URL login_path which was defined in config/routes.rb”
-  def new
-
-  end
+ # says to the computer “Create me a form for the sessions controller, 
+ # and submit it to the URL login_path which was defined in config/routes.rb”
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
