@@ -36,21 +36,23 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private def set_article
-    @article = Article.find(params[:id])
-  end
-
-  private def article_params
-    params.require(:article).permit(:title, :description)
-  end
-
-  def show; end
-
   def destroy
     @article.destroy
     flash[:danger] = 'Article was removed'
     redirect_to articles_path
   end
+
+  private
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :description, category_ids: [])
+  end
+
+  def show; end
 
   def require_same_user
     if current_user != @article.user && !current_user.admin?
